@@ -18,7 +18,7 @@ class App extends React.Component {
    console.log(sort);
    this.setState(state => ({
      sort: sort,
-     products: this.state.products.slice().sort((a, b) => (
+     products: this.state.products.sort((a, b) => (
        sort === 'lowest' ? ((a.price > b.price) ? 1:-1) : sort === 'highest' ? ((a.price < b.price) ? 1:-1) : ((a._id < b._id) ? 1:-1)
    ))
    }));
@@ -50,8 +50,8 @@ filterProducts = (event) => {
           <div className='main'>
             <Filter 
               count={this.state.products.length}
-              size={this.state.products.size}
-              sort={this.state.products.sort}
+              size={this.state.size}
+              sort={this.state.sort}
               filterProducts={this.filterProducts}
               sortProducts={this.sortProducts}
               />
