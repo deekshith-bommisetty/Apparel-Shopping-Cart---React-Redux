@@ -31,29 +31,25 @@ class App extends React.Component {
   //     alreadyInCart=true;
   //   }
   //   if(!alreadyInCart) {
-  //     cartItems.push({...product, count:1});
+  //     cartItems.push({ ...product, count:1 });
   //   }
   // })
-  //   this.setState({cartItems});
+  //   this.setState({ cartItems });
   // };
-  // addToCart = product => {
-  //   const foundIndex = this.state.cartItems.findIndex(
-  //     item => item._id === product._id
-  //   );
-  
-  //   if (foundIndex !== -1) {
-  //     this.setState(cartItems =>
-  //       cartItems.map((item, i) =>
-  //         i === foundIndex
-  //           ? { ...item, count: item.count + 1 } // copy item and update count property
-  //           : item
-  //       )
-  //     );
-  //   } else {
-  //     this.setState(cartItems => [...cartItems, { ...product, count: 1 }]);
-  //   }
-  // };
-  
+  addToCart = (product) => {
+    const cartItems = this.state.cartItems.slice();
+    let alreadyInCart = false;
+    cartItems.forEach((item) => {
+      if (item._id === product._id) {
+        item.count++;
+        alreadyInCart = true;
+      }
+    });
+    if (!alreadyInCart) {
+      cartItems.push({ ...product, count: 1 });
+    }
+    this.setState({ cartItems });
+  };
  sortProducts = (event) => {
    const sort = event.target.value;
    console.log(sort);
