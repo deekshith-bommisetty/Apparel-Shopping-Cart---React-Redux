@@ -11,12 +11,13 @@ body,
 }
 body,
 input,
-button,
 select,
+button,
 textarea {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
 }
+
 .grid-container {
   display: grid;
   grid-template-areas:
@@ -38,7 +39,6 @@ header {
   background-color: #203040;
   color: #ffffff;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
 }
@@ -57,6 +57,7 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
 .content {
   display: flex;
   flex-wrap: wrap;
@@ -68,7 +69,7 @@ footer {
   flex: 1 20rem;
 }
 
-/*product styling*/
+/* products */
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -82,7 +83,6 @@ footer {
   flex: 0 1 29rem;
   height: 47rem;
   padding: 1rem;
-  margin: 1rem;
 }
 .product {
   display: flex;
@@ -130,7 +130,7 @@ footer {
 .filter div {
   flex: 1;
 }
-/* Cart Component */
+/* Index.css */
 .cart {
   padding: 1rem;
   margin: 1rem;
@@ -153,6 +153,9 @@ footer {
 .cart-items li div {
   padding: 0.5rem;
 }
+.cart-items li div:last-child {
+  flex: 1;
+}
 .right {
   text-align: right;
 }
@@ -168,4 +171,23 @@ footer {
 .total > div,
 .total > button {
   flex: 1;
+}
+/* Checkout form */
+form {
+  width: 100%;
+}
+.form-container {
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+
+}
+.form-container li {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+input {
+  padding: 1rem;
+  border: 0.1rem #c0c0c0 solid;
 }
