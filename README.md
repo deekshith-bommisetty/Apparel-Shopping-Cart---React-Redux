@@ -1,4 +1,7 @@
-# Apparel Shopping Cart using React and Redux
+# Apparel Shopping Cart using React.js and Redux
+
+## Welcome! 👋
+Thanks for checking out this project
 
 ## Overview
 This shopping cart prototype was developed to show how React components and Redux can be used to build a
