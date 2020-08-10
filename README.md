@@ -1,5 +1,10 @@
 # Apparel Shopping Cart using React.js and Redux
 
+<p align="center">
+
+  <img src="./apparel-shopping.gif">
+</p>
+
 ## Welcome! 👋
 Thanks for checking out this project
 
