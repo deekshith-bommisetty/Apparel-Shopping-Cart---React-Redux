@@ -12,7 +12,7 @@ mongoose.connect("mongodb://localhost/react-shopping-cart-db", {
   useUnifiedTopology: true,
 });
 
-//product schema
+//product Schema
 const Product = mongoose.model(
   "products",
   new mongoose.Schema({
@@ -38,13 +38,13 @@ app.post("/api/products", async (req, res) => {
   res.send(savedProduct);
 });
 
-//DELETE a product by ID
+//DELETE a product
 app.delete("/api/products/:id", async (req, res) => {
   const deletedProduct = await Product.findByIdAndDelete(req.params.id);
   res.send(deletedProduct);
 });
 
-//order schema
+//order Schema
 const Order = mongoose.model(
   "order",
   new mongoose.Schema(
@@ -93,7 +93,7 @@ app.get("/api/orders", async (req, res) => {
   res.send(orders);
 });
 
-//DELETE an order by ID
+//Delete an order made
 app.delete("/api/orders/:id", async (req, res) => {
   const order = await Order.findByIdAndDelete(req.params.id);
   res.send(order);
