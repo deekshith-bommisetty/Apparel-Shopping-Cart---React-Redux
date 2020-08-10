@@ -8,6 +8,8 @@
 ## Welcome! 👋
 Thanks for checking out this project
 
+#### Please check out the link for demo: https://apparel-shopping.herokuapp.com/
+
 ## Overview
 This shopping cart prototype was developed to show how React components and Redux can be used to build a
 user friendly experience with instant visual updates and scaleable code in ecommerce applications.
