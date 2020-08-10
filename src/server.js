@@ -12,6 +12,7 @@ mongoose.connect("mongodb://localhost/react-shopping-cart-db", {
   useUnifiedTopology: true,
 });
 
+//product schema
 const Product = mongoose.model(
   "products",
   new mongoose.Schema({
@@ -24,22 +25,26 @@ const Product = mongoose.model(
   })
 );
 
+//GET all products
 app.get("/api/products", async (req, res) => {
   const products = await Product.find({});
   res.send(products);
 });
 
+//POST a new product
 app.post("/api/products", async (req, res) => {
   const newProduct = new Product(req.body);
   const savedProduct = await newProduct.save();
   res.send(savedProduct);
 });
 
+//DELETE a product by ID
 app.delete("/api/products/:id", async (req, res) => {
   const deletedProduct = await Product.findByIdAndDelete(req.params.id);
   res.send(deletedProduct);
 });
 
+//order schema
 const Order = mongoose.model(
   "order",
   new mongoose.Schema(
@@ -67,6 +72,7 @@ const Order = mongoose.model(
   )
 );
 
+//POST a new order
 app.post("/api/orders", async (req, res) => {
   if (
     !req.body.name ||
@@ -81,6 +87,17 @@ app.post("/api/orders", async (req, res) => {
   res.send(order);
 });
 
+//GET all orders made
+app.get("/api/orders", async (req, res) => {
+  const orders = await Order.find({});
+  res.send(orders);
+});
+
+//DELETE an order by ID
+app.delete("/api/orders/:id", async (req, res) => {
+  const order = await Order.findByIdAndDelete(req.params.id);
+  res.send(order);
+});
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log("serve at http://localhost:5000"));

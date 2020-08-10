@@ -1,6 +1,7 @@
 import { FETCH_PRODUCTS } from "../types";
 import { FILTER_PRODUCTS_BY_SIZE, ORDER_PRODUCTS_BY_PRICE } from "../types";
 
+//action to fetch all products
 export const fetchProducts = () => async (dispatch) => {
   const res = await fetch("/api/products");
   const data = await res.json();
@@ -11,6 +12,7 @@ export const fetchProducts = () => async (dispatch) => {
   });
 };
 
+//action to filter products based on available sizes
 export const filterProducts = (products, size) => (dispatch) => {
   dispatch({
     type: FILTER_PRODUCTS_BY_SIZE,
@@ -23,6 +25,8 @@ export const filterProducts = (products, size) => (dispatch) => {
     },
   });
 };
+
+//action to sort products based on price 
 export const sortProducts = (filteredProducts, sort) => (dispatch) => {
   const sortedProducts = filteredProducts.slice();
   if (sort === "latest") {

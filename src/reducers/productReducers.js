@@ -4,6 +4,7 @@ import {
     ORDER_PRODUCTS_BY_PRICE,
   } from "../types";
   
+  //reducer for filtering, sorting and fetching products
   export const productsReducer = (state = {}, action) => {
     switch (action.type) {
       case FILTER_PRODUCTS_BY_SIZE:
