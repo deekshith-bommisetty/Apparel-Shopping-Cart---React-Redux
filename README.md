@@ -14,7 +14,7 @@ Thanks for checking out this project
 This shopping cart prototype was developed to show how React components and Redux can be used to build a
 user friendly experience with instant visual updates and scaleable code in ecommerce applications.
 
-### Features
+## Features
 - Sort products froom highest price to lowest price or vice versa or latest products first
 - Filter products based on available sizes
 - Add and remove products from the cart
@@ -22,7 +22,7 @@ user friendly experience with instant visual updates and scaleable code in ecomm
 - A form for entering order delivery details is to be filled to place order after checkout
 - Admin route implemented as a simple backend to track all the orders placed
 
-### Development Flow
+## Development Flow
 
 - Design and layout of the Shopping Cart was made using HTML and CSS
 - Implement React Components For Product List, Filter, Cart
