@@ -12,6 +12,7 @@ mongoose.connect("mongodb://localhost/react-shopping-cart-db", {
   useUnifiedTopology: true,
 });
 
+//product Schema
 const Product = mongoose.model(
   "products",
   new mongoose.Schema({
@@ -24,22 +25,26 @@ const Product = mongoose.model(
   })
 );
 
+//GET all products
 app.get("/api/products", async (req, res) => {
   const products = await Product.find({});
   res.send(products);
 });
 
+//POST a new product
 app.post("/api/products", async (req, res) => {
   const newProduct = new Product(req.body);
   const savedProduct = await newProduct.save();
   res.send(savedProduct);
 });
 
+//DELETE a product
 app.delete("/api/products/:id", async (req, res) => {
   const deletedProduct = await Product.findByIdAndDelete(req.params.id);
   res.send(deletedProduct);
 });
 
+//order Schema
 const Order = mongoose.model(
   "order",
   new mongoose.Schema(
@@ -67,6 +72,7 @@ const Order = mongoose.model(
   )
 );
 
+//POST a new order
 app.post("/api/orders", async (req, res) => {
   if (
     !req.body.name ||
@@ -80,10 +86,14 @@ app.post("/api/orders", async (req, res) => {
   const order = await Order(req.body).save();
   res.send(order);
 });
+
+//GET all orders made
 app.get("/api/orders", async (req, res) => {
   const orders = await Order.find({});
   res.send(orders);
 });
+
+//Delete an order made
 app.delete("/api/orders/:id", async (req, res) => {
   const order = await Order.findByIdAndDelete(req.params.id);
   res.send(order);

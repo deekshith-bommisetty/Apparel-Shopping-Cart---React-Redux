@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import formatCurrency from '../util';
-import Fade from 'react-reveal/Fade';
-import { connect } from 'react-redux';
-import Modal from 'react-modal';
-import Zoom from 'react-reveal/Zoom';
-import { removeFromCart } from '../actions/cartActions';
-import { createOrder, clearOrder } from '../actions/orderActions';
+import React, { Component } from "react";
+import formatCurrency from "../util";
+import Fade from "react-reveal/Fade";
+import { connect } from "react-redux";
+import Modal from "react-modal";
+import Zoom from "react-reveal/Zoom";
+import { removeFromCart } from "../actions/cartActions";
+import { createOrder, clearOrder } from "../actions/orderActions";
 
 class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      address: '',
+      name: "",
+      email: "",
+      address: "",
       showCheckout: false,
     };
   }
@@ -39,21 +39,21 @@ class Cart extends Component {
     return (
       <div>
         {cartItems.length === 0 ? (
-          <div className='cart cart-header'>Cart is empty</div>
+          <div className="cart cart-header">Cart is empty</div>
         ) : (
-          <div className='cart cart-header'>
-            You have {cartItems.length} in the cart{' '}
+          <div className="cart cart-header">
+            You have {cartItems.length} in the cart{" "}
           </div>
         )}
 
         {order && (
           <Modal isOpen={true} onRequestClose={this.closeModal}>
             <Zoom>
-              <button className='close-modal' onClick={this.closeModal}>
+              <button className="close-modal" onClick={this.closeModal}>
                 x
               </button>
-              <div className='order-details'>
-                <h3 className='success-message'>Your order has been placed.</h3>
+              <div className="order-details">
+                <h3 className="success-message">Your order has been placed.</h3>
                 <h2>Order {order._id}</h2>
                 <ul>
                   <li>
@@ -81,7 +81,7 @@ class Cart extends Component {
                     <div>
                       {order.cartItems.map((x) => (
                         <div>
-                          {x.count} {' x '} {x.title}
+                          {x.count} {" x "} {x.title}
                         </div>
                       ))}
                     </div>
@@ -92,9 +92,9 @@ class Cart extends Component {
           </Modal>
         )}
         <div>
-          <div className='cart'>
+          <div className="cart">
             <Fade left cascade>
-              <ul className='cart-items'>
+              <ul className="cart-items">
                 {cartItems.map((item) => (
                   <li key={item._id}>
                     <div>
@@ -102,10 +102,10 @@ class Cart extends Component {
                     </div>
                     <div>
                       <div>{item.title}</div>
-                      <div className='right'>
-                        {formatCurrency(item.price)} x {item.count}{' '}
+                      <div className="right">
+                        {formatCurrency(item.price)} x {item.count}{" "}
                         <button
-                          className='button'
+                          className="button"
                           onClick={() => this.props.removeFromCart(item)}
                         >
                           Remove
@@ -119,10 +119,10 @@ class Cart extends Component {
           </div>
           {cartItems.length !== 0 && (
             <div>
-              <div className='cart'>
-                <div className='total'>
+              <div className="cart">
+                <div className="total">
                   <div>
-                    Total:{' '}
+                    Total:{" "}
                     {formatCurrency(
                       cartItems.reduce((a, c) => a + c.price * c.count, 0)
                     )}
@@ -131,7 +131,7 @@ class Cart extends Component {
                     onClick={() => {
                       this.setState({ showCheckout: true });
                     }}
-                    className='button primary'
+                    className="button primary"
                   >
                     Proceed
                   </button>
@@ -139,14 +139,14 @@ class Cart extends Component {
               </div>
               {this.state.showCheckout && (
                 <Fade right cascade>
-                  <div className='cart'>
+                  <div className="cart">
                     <form onSubmit={this.createOrder}>
-                      <ul className='form-container'>
+                      <ul className="form-container">
                         <li>
                           <label>Email</label>
                           <input
-                            name='email'
-                            type='email'
+                            name="email"
+                            type="email"
                             required
                             onChange={this.handleInput}
                           ></input>
@@ -154,8 +154,8 @@ class Cart extends Component {
                         <li>
                           <label>Name</label>
                           <input
-                            name='name'
-                            type='text'
+                            name="name"
+                            type="text"
                             required
                             onChange={this.handleInput}
                           ></input>
@@ -163,14 +163,14 @@ class Cart extends Component {
                         <li>
                           <label>Address</label>
                           <input
-                            name='address'
-                            type='text'
+                            name="address"
+                            type="text"
                             required
                             onChange={this.handleInput}
                           ></input>
                         </li>
                         <li>
-                          <button className='button primary' type='submit'>
+                          <button className="button primary" type="submit">
                             Checkout
                           </button>
                         </li>

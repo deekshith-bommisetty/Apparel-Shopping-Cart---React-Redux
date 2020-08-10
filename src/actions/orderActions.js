@@ -1,3 +1,5 @@
+import { CREATE_ORDER, CLEAR_CART, CLEAR_ORDER, FETCH_ORDERS } from "../types";
+=======
 import {
   CREATE_ORDER,
   CLEAR_CART,
@@ -5,6 +7,7 @@ import {
   FETCH_ORDERS,
 } from '../types';
 
+//action to create an order
 export const createOrder = (order) => (dispatch) => {
   fetch('/api/orders', {
     method: 'POST',
@@ -20,8 +23,20 @@ export const createOrder = (order) => (dispatch) => {
       dispatch({ type: CLEAR_CART });
     });
 };
+
+//action to clear an order
 export const clearOrder = () => (dispatch) => {
   dispatch({ type: CLEAR_ORDER });
+};
+
+
+//action to fetch all orders made
+export const fetchOrders = () => (dispatch) => {
+  fetch("/api/orders")
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({ type: FETCH_ORDERS, payload: data });
+    });
 };
 
 export const fetchOrders = () => (dispatch) => {

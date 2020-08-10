@@ -1,5 +1,6 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../types";
+import { ADD_TO_CART, REMOVE_FROM_CART } from '../types';
 
+//action for Adding an item to cart
 export const addToCart = (product) => (dispatch, getState) => {
   const cartItems = getState().cart.cartItems.slice();
   let alreadyExists = false;
@@ -16,13 +17,14 @@ export const addToCart = (product) => (dispatch, getState) => {
     type: ADD_TO_CART,
     payload: { cartItems },
   });
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
 };
 
+//action for removing an item from cart
 export const removeFromCart = (product) => (dispatch, getState) => {
   const cartItems = getState()
     .cart.cartItems.slice()
     .filter((x) => x._id !== product._id);
   dispatch({ type: REMOVE_FROM_CART, payload: { cartItems } });
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
 };
